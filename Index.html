@@ -3,23 +3,68 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rainfall Pattern Visualization — India (HTML)</title>
+  <title>Rainfall Pattern Visualization — India</title>
   <style>
-    :root{--bg:#0f172a;--card:#0b1220;--accent:#60a5fa;--muted:#94a3b8;--ok:#34d399}
-    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial; margin:0; background:linear-gradient(180deg,#071028 0%, #061426 100%); color:#e6eef8; padding:24px}
-    .wrap{max-width:980px;margin:0 auto}
-    header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-    h1{font-size:20px;margin:0}
-    .card{background:rgba(255,255,255,0.03); padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6); margin-bottom:14px}
-    .console{background:#020617;color:#cfe8ff;padding:14px;border-radius:8px; font-family:Menlo,monospace; white-space:pre-wrap; line-height:1.35; font-size:13px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .full{grid-column:1/-1}
-    .bar{height:18px;border-radius:6px; background:linear-gradient(90deg,#60a5fa,#2563eb); margin:6px 0}
-    .label{display:flex;justify-content:space-between; font-size:13px; color:var(--muted)}
-    .mini{font-size:12px;color:var(--muted)}
-    .btn{background:var(--accent); color:#04203a; padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
-    footer{font-size:12px;color:var(--muted);margin-top:8px}
-    @media (max-width:700px){ .grid{grid-template-columns:1fr} }
+    :root {
+      --bg:#0f172a;
+      --card:#0b1220;
+      --accent:#60a5fa;
+      --muted:#94a3b8;
+      --ok:#34d399;
+    }
+    body {
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial;
+      margin:0;
+      background:linear-gradient(180deg,#071028 0%, #061426 100%);
+      color:#e6eef8;
+      padding:24px;
+    }
+    .wrap {max-width:980px; margin:0 auto;}
+    header {display:flex; align-items:center; gap:14px; margin-bottom:18px;}
+    h1 {font-size:20px; margin:0;}
+    .card {
+      background:rgba(255,255,255,0.03);
+      padding:18px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(2,6,23,0.6);
+      margin-bottom:14px;
+    }
+    .console {
+      background:#020617;
+      color:#cfe8ff;
+      padding:14px;
+      border-radius:8px;
+      font-family:Menlo,monospace;
+      white-space:pre-wrap;
+      line-height:1.35;
+      font-size:13px;
+    }
+    .grid {display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+    .full {grid-column:1/-1;}
+    .bar {
+      height:18px;
+      border-radius:6px;
+      background:linear-gradient(90deg,#60a5fa,#2563eb);
+      margin:6px 0;
+    }
+    .label {
+      display:flex;
+      justify-content:space-between;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .mini {font-size:12px; color:var(--muted);}
+    .btn {
+      background:var(--accent);
+      color:#04203a;
+      padding:8px 12px;
+      border-radius:8px;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+    }
+    footer {font-size:12px; color:var(--muted); margin-top:8px;}
+    @media (max-width:700px) {.grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -27,14 +72,14 @@
     <header>
       <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#60a5fa,#2563eb);display:flex;align-items:center;justify-content:center;font-weight:700;color:#02122a">RAIN</div>
       <div>
-        <h1>.... RAINFALL PATTERN VISUALIZATION IN INDIA ....</h1>
-        <div class="mini">Sample data (simplified) — converted to interactive HTML output</div>
+        <h1>RAINFALL PATTERN VISUALIZATION IN INDIA</h1>
+        <div class="mini">Sample dataset — Interactive HTML Output</div>
       </div>
     </header>
 
     <div class="card">
       <button id="runBtn" class="btn">Run Visualization</button>
-      <div class="mini" style="margin-top:8px">Tap "Run Visualization" to render outputs below.</div>
+      <div class="mini" style="margin-top:8px">Tap "Run Visualization" to render the data visualization below.</div>
     </div>
 
     <div id="outputArea" class="grid"></div>
@@ -42,135 +87,137 @@
     <footer>Text-based visualization & summary — each • = 50 mm in the text graph</footer>
   </div>
 
-<script>
-/* --------- Data (from your original snippet) --------- */
-const Years = [2016,2017,2018,2019,2020];
-const Rainfall_mm = [950,1100,870,1200,990];
-const States = ["Kerala","Tamil Nadu","Karnataka","Rajasthan","Punjab"];
-const State_rainfall = [2800,950,1200,600,800];
-const Months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-const Monthly_rain = [30,20,25,60,90,250,300,280,220,100,60,40];
+  <script>
+    /* --------- Dataset --------- */
+    const Years = [2016,2017,2018,2019,2020];
+    const Rainfall_mm = [950,1100,870,1200,990];
+    const States = ["Kerala","Tamil Nadu","Karnataka","Rajasthan","Punjab"];
+    const State_rainfall = [2800,950,1200,600,800];
+    const Months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    const Monthly_rain = [30,20,25,60,90,250,300,280,220,100,60,40];
 
-/* Utility: create element helper */
-function el(tag, props={}, children=[]) {
-  const e = document.createElement(tag);
-  Object.entries(props).forEach(([k,v])=>{ if(k==="class") e.className=v; else if(k==="html") e.innerHTML=v; else e.setAttribute(k,v); });
-  (Array.isArray(children)?children:[children]).flat().forEach(c=>{ if(typeof c==='string') e.appendChild(document.createTextNode(c)); else if(c) e.appendChild(c); });
-  return e;
-}
+    /* --------- Helper to create elements --------- */
+    function el(tag, props={}, children=[]) {
+      const e = document.createElement(tag);
+      Object.entries(props).forEach(([k,v])=>{
+        if(k==="class") e.className=v;
+        else if(k==="html") e.innerHTML=v;
+        else e.setAttribute(k,v);
+      });
+      (Array.isArray(children)?children:[children]).flat().forEach(c=>{
+        if(typeof c==='string') e.appendChild(document.createTextNode(c));
+        else if(c) e.appendChild(c);
+      });
+      return e;
+    }
 
-/* Main renderer (runs once when user clicks) */
-function renderAll() {
-  const out = document.getElementById('outputArea');
-  out.innerHTML = ''; // clear
+    /* --------- Main Renderer --------- */
+    function renderAll() {
+      const out = document.getElementById('outputArea');
+      out.innerHTML = '';
 
-  // Console-like header (emulates Print lines)
-  const headerCard = el('div',{class:'card full'});
-  const consolePre = el('div',{class:'console', html:
+      // Header Console
+      const headerCard = el('div',{class:'card full'});
+      const consolePre = el('div',{class:'console', html:
 `==============================================
 ....RAINFALL PATTERN VISUALIZATION IN INDIA ....
 ==============================================
 
 ANNUAL AVERAGE RAINFALL (2016–2020)
 ==============================================`});
-  headerCard.appendChild(consolePre);
-  out.appendChild(headerCard);
+      headerCard.appendChild(consolePre);
+      out.appendChild(headerCard);
 
-  // --- Annual list (with star representation) ---
-  const annualCard = el('div',{class:'card'});
-  annualCard.appendChild(el('div',{class:'label', html:`<strong>Year</strong><strong>Rain (mm)</strong>`}));
-  // Determine a simple scaling for visual bars
-  const maxAnnual = Math.max(...Rainfall_mm);
-  Rainfall_mm.forEach((val,i)=>{
-    const stars = 'R'.repeat(Math.floor(val/100)); // like your original
-    const row = el('div',{},[
-      el('div',{class:'label', html:`<span>${Years[i]}</span><span>${val} mm</span>`}),
-      el('div',{style:`display:flex;gap:8px;align-items:center`},[
-        el('div',{style:`flex:1;background:#071421;border-radius:8px;padding:6px`}, [
-          el('div',{class:'bar', style:`width:${Math.round((val/maxAnnual)*100)}%`})
-        ]),
-        el('div',{class:'mini'}, stars)
-      ])
-    ]);
-    annualCard.appendChild(row);
-  });
-  // Average annual
-  const avg_annual = Rainfall_mm.reduce((a,b)=>a+b,0)/Rainfall_mm.length;
-  annualCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, `Average Rainfall (2016–2020): ${avg_annual.toFixed(2)} mm`));
-  out.appendChild(annualCard);
+      // --- Annual Rainfall ---
+      const annualCard = el('div',{class:'card'});
+      annualCard.appendChild(el('div',{class:'label', html:`<strong>Year</strong><strong>Rain (mm)</strong>`}));
+      const maxAnnual = Math.max(...Rainfall_mm);
+      Rainfall_mm.forEach((val,i)=>{
+        const stars = 'R'.repeat(Math.floor(val/100));
+        const row = el('div',{},[
+          el('div',{class:'label', html:`<span>${Years[i]}</span><span>${val} mm</span>`}),
+          el('div',{style:`display:flex;gap:8px;align-items:center`},[
+            el('div',{style:`flex:1;background:#071421;border-radius:8px;padding:6px`}, [
+              el('div',{class:'bar', style:`width:${Math.round((val/maxAnnual)*100)}%`})
+            ]),
+            el('div',{class:'mini'}, stars)
+          ])
+        ]);
+        annualCard.appendChild(row);
+      });
+      const avg_annual = Rainfall_mm.reduce((a,b)=>a+b,0)/Rainfall_mm.length;
+      annualCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, `Average Rainfall (2016–2020): ${avg_annual.toFixed(2)} mm`));
+      out.appendChild(annualCard);
 
-  // --- State-wise ---
-  const stateCard = el('div',{class:'card'});
-  stateCard.appendChild(el('div',{class:'label', html:`<strong>State</strong><strong>Rain (mm)</strong>`}));
-  const maxState = Math.max(...State_rainfall);
-  State_rainfall.forEach((val,i)=>{
-    const level = 'D'.repeat(Math.floor(val/300));
-    const row = el('div',{},[
-      el('div',{class:'label', html:`<span>${States[i]}</span><span>${val} mm</span>`}),
-      el('div',{style:`display:flex;gap:8px;align-items:center`},[
-        el('div',{style:`flex:1;background:#071421;border-radius:8px;padding:6px`}, [
-          el('div',{class:'bar', style:`width:${Math.round((val/maxState)*100)}%`})
-        ]),
-        el('div',{class:'mini'}, level)
-      ])
-    ]);
-    stateCard.appendChild(row);
-  });
-  out.appendChild(stateCard);
+      // --- State-wise Rainfall ---
+      const stateCard = el('div',{class:'card'});
+      stateCard.appendChild(el('div',{class:'label', html:`<strong>State</strong><strong>Rain (mm)</strong>`}));
+      const maxState = Math.max(...State_rainfall);
+      State_rainfall.forEach((val,i)=>{
+        const level = 'D'.repeat(Math.floor(val/300));
+        const row = el('div',{},[
+          el('div',{class:'label', html:`<span>${States[i]}</span><span>${val} mm</span>`}),
+          el('div',{style:`display:flex;gap:8px;align-items:center`},[
+            el('div',{style:`flex:1;background:#071421;border-radius:8px;padding:6px`}, [
+              el('div',{class:'bar', style:`width:${Math.round((val/maxState)*100)}%`})
+            ]),
+            el('div',{class:'mini'}, level)
+          ])
+        ]);
+        stateCard.appendChild(row);
+      });
+      out.appendChild(stateCard);
 
-  // --- Monthly rainfall (with small bars) ---
-  const monthlyCard = el('div',{class:'card full'});
-  monthlyCard.appendChild(el('div',{class:'label', html:`<strong>Month</strong><strong>Rain (mm)</strong>`}));
-  const maxMonth = Math.max(...Monthly_rain);
-  const monthsGrid = el('div',{}, Monthly_rain.map((val,i)=>{
-    const drops = 'NR'.repeat(Math.floor(val/25));
-    return el('div',{},[
-      el('div',{class:'label', html:`<span>${Months[i]}</span><span>${val} mm</span>`}),
-      el('div',{style:`display:flex;gap:8px;align-items:center`},[
-        el('div',{style:`flex:1;background:#071421;border-radius:8px;padding:6px`}, [
-          el('div',{class:'bar', style:`height:12px;width:${Math.round((val/maxMonth)*100)}%`})
-        ]),
-        el('div',{class:'mini'}, drops)
-      ])
-    ]);
-  }));
-  monthlyCard.appendChild(monthsGrid);
-  const avg_monthly = Monthly_rain.reduce((a,b)=>a+b,0)/Monthly_rain.length;
-  monthlyCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, `Average Monthly Rainfall: ${avg_monthly.toFixed(2)} mm`));
-  out.appendChild(monthlyCard);
+      // --- Monthly Rainfall ---
+      const monthlyCard = el('div',{class:'card full'});
+      monthlyCard.appendChild(el('div',{class:'label', html:`<strong>Month</strong><strong>Rain (mm)</strong>`}));
+      const maxMonth = Math.max(...Monthly_rain);
+      const monthsGrid = el('div',{}, Monthly_rain.map((val,i)=>{
+        const drops = 'NR'.repeat(Math.floor(val/25));
+        return el('div',{},[
+          el('div',{class:'label', html:`<span>${Months[i]}</span><span>${val} mm</span>`}),
+          el('div',{style:`display:flex;gap:8px;align-items:center`},[
+            el('div',{style:`flex:1;background:#071421;border-radius:8px;padding:6px`}, [
+              el('div',{class:'bar', style:`height:12px;width:${Math.round((val/maxMonth)*100)}%`})
+            ]),
+            el('div',{class:'mini'}, drops)
+          ])
+        ]);
+      }));
+      monthlyCard.appendChild(monthsGrid);
+      const avg_monthly = Monthly_rain.reduce((a,b)=>a+b,0)/Monthly_rain.length;
+      monthlyCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, `Average Monthly Rainfall: ${avg_monthly.toFixed(2)} mm`));
+      out.appendChild(monthlyCard);
 
-  // --- Regional comparison ---
-  const south_avg = (State_rainfall[0]+State_rainfall[1]+State_rainfall[2])/3;
-  const north_avg = (State_rainfall[3]+State_rainfall[4])/2;
-  const regionCard = el('div',{class:'card'});
-  regionCard.appendChild(el('div',{html:`<strong>REGIONAL COMPARISON (SOUTH VS NORTH INDIA)</strong>`}));
-  regionCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, `South India Avg Rainfall: ${south_avg.toFixed(1)} mm`));
-  regionCard.appendChild(el('div',{class:'mini'}, `North India Avg Rainfall: ${north_avg.toFixed(1)} mm`));
-  const comparisonText = south_avg > north_avg ? "\nSouth India receives more rainfall overall." : "\nNorth India receives more rainfall overall.";
-  regionCard.appendChild(el('div',{class:'mini', style:'margin-top:8px;white-space:pre-wrap'}, comparisonText));
-  out.appendChild(regionCard);
+      // --- Regional Comparison ---
+      const south_avg = (State_rainfall[0]+State_rainfall[1]+State_rainfall[2])/3;
+      const north_avg = (State_rainfall[3]+State_rainfall[4])/2;
+      const regionCard = el('div',{class:'card'});
+      regionCard.appendChild(el('div',{html:`<strong>REGIONAL COMPARISON (SOUTH VS NORTH INDIA)</strong>`}));
+      regionCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, `South India Avg Rainfall: ${south_avg.toFixed(1)} mm`));
+      regionCard.appendChild(el('div',{class:'mini'}, `North India Avg Rainfall: ${north_avg.toFixed(1)} mm`));
+      const comparisonText = south_avg > north_avg ? "\nSouth India receives more rainfall overall." : "\nNorth India receives more rainfall overall.";
+      regionCard.appendChild(el('div',{class:'mini', style:'margin-top:8px;white-space:pre-wrap'}, comparisonText));
+      out.appendChild(regionCard);
 
-  // --- Trend analysis & text-based graph ---
-  const trendCard = el('div',{class:'card full'});
-  const trend = (Rainfall_mm[Rainfall_mm.length-1] > Rainfall_mm[0]) ? "increase" : "decrease";
-  trendCard.appendChild(el('div',{html:`<strong>TREND ANALYSIS (TEXT BASED)</strong>`}));
-  trendCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, `Rainfall trend shows an **${trend}** over the years.`));
+      // --- Trend Analysis ---
+      const trendCard = el('div',{class:'card full'});
+      const trend = (Rainfall_mm[Rainfall_mm.length-1] > Rainfall_mm[0]) ? "increase" : "decrease";
+      trendCard.appendChild(el('div',{html:`<strong>TREND ANALYSIS (TEXT BASED)</strong>`}));
+      trendCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, `Rainfall trend shows an **${trend}** over the years.`));
+      trendCard.appendChild(el('div',{class:'mini', style:'margin-top:10px'}, `TEXT-BASED GRAPH (Each • = 50 mm)`));
 
-  trendCard.appendChild(el('div',{class:'mini', style:'margin-top:10px'}, `TEXT-BASED GRAPH (Each • = 50 mm)`));
-  // textual graph lines
-  Rainfall_mm.forEach((val,i)=>{
-    const dots = '•'.repeat(Math.floor(val/50));
-    trendCard.appendChild(el('div',{class:'console', style:'margin-top:6px'}, `${Years[i]} | ${dots}`));
-  });
-  trendCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, 'Rainfall Visualization Completed Successfully!'));
-  out.appendChild(trendCard);
+      Rainfall_mm.forEach((val,i)=>{
+        const dots = '•'.repeat(Math.floor(val/50));
+        trendCard.appendChild(el('div',{class:'console', style:'margin-top:6px'}, `${Years[i]} | ${dots}`));
+      });
+      trendCard.appendChild(el('div',{class:'mini', style:'margin-top:8px'}, 'Rainfall Visualization Completed Successfully!'));
+      out.appendChild(trendCard);
 
-  // Scroll into view
-  setTimeout(()=>{ out.scrollIntoView({behavior:'smooth'}); },80);
-}
+      setTimeout(()=>{ out.scrollIntoView({behavior:'smooth'}); },80);
+    }
 
-/* Attach run button */
-document.getElementById('runBtn').addEventListener('click', renderAll);
-</script>
+    document.getElementById('runBtn').addEventListener('click', renderAll);
+  </script>
 </body>
 </html>
